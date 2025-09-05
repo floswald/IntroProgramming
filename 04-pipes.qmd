@@ -1,0 +1,334 @@
+---
+title: "Pipes and Filters"
+format: 
+  revealjs:
+    theme: _extensions/metropolis-theme/metropolis.scss
+    chalkboard: true
+    logo: /images/ScPo-logo.png
+    footer: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
+    incremental: false
+    code-line-numbers: false
+    highlight-style: github
+author: Florian Oswald and The Software Carpentry
+subtitle: "[SciencesPo Intro To Programming 2024](https://floswald.github.io/ScPoProgramming/)"
+date: today
+date-format: "D MMMM, YYYY"
+---
+
+
+## Combining Commands
+
+* We are now ready to combine some of the commands we learned.
+
+* You will see that here is where the real power lies.
+
+* Let's navigate into our exercise data folder first.
+
+```bash
+$ cd ~/shell-lesson-data/exercise-data/proteins
+$ ls
+cubane.pdb   ethane.pdb   methane.pdb  octane.pdb   pentane.pdb  propane.pdb
+```
+
+* Those are *protein data bank* files.
+
+---
+
+## Capturing Output
+
+* Introducing the `wc` word count command. 
+
+```bash
+wc cubane.pdb
+20     156    1158 cubane.pdb
+```
+29 lines, 156 words, 1158 characters.
+
+* Let's **redirect** the output of `wc` to a file instead with `>`:
+
+```bash
+wc -l *.pdb > lengths.txt
+```
+
+* no ouput on screen, you see? but now there is a new file: `lengths.txt`.
+* Let's *concatenate* its content (i.e. join together) and print to screen:
+```bash
+$ cat lengths.txt 
+      20 cubane.pdb
+      12 ethane.pdb
+       9 methane.pdb
+      30 octane.pdb
+      21 pentane.pdb
+      15 propane.pdb
+     107 total
+```
+
+---
+
+## Reading Text Files
+
+* `cat` prints the entire thing to screen.
+* `tail` only the end
+* `head` only the beginning
+* `less` lets you scroll and read (arrows up/down or `j` (up) and `k` (down), `q` exits.)
+
+```bash
+$ head -n 3 ../animal-counts/animals.csv
+$ tail -n 2 ../animal-counts/animals.csv
+$ less ../../north-pacific-gyre/NENE01729A.txt
+```
+
+
+---
+
+## Printing Text with `echo`
+
+* The `echo` function prints text - by default to screen:
+```bash
+$ echo hi
+hi
+```
+
+* But you can redirect it to a file as well:
+```bash
+$ echo I said hi! > echofile1.txt
+```
+
+::: {.callout-important}
+
+# Challenge
+
+Do 2 times in a row:
+```bash
+$ echo I said hi! > echofile1.txt
+```
+
+Now do twice (notice `>>`!)
+```bash
+$ echo I said hi! >> echofile2.txt
+```
+* What's happening?
+:::
+
+
+---
+
+## Appending to Files
+
+::: {.callout-important}
+
+# Challenge
+
+Consider the file `shell-lesson-data/exercise-data/animal-counts/animals.csv`. What is result of this:
+
+```bash
+$ head -n 3 animals.csv > animals-subset.csv
+$ tail -n 2 animals.csv >> animals-subset.csv
+```
+
+1. The first three lines of animals.csv?
+2. The last two lines of animals.csv?
+3. The first three lines and the last two lines of animals.csv?
+4. The second and third lines of animals.csv?
+:::
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+Option 3 is correct.
+:::
+</details>
+
+
+---
+
+## Filtering Files with `sort`
+
+* `sort` reads a file and *sorts* it's content to screen
+* it does not change the file.
+
+```bash
+$ sort -n lengths.txt 
+```
+
+```
+   9 methane.pdb
+  12 ethane.pdb
+  15 propane.pdb
+  20 cubane.pdb
+  21 pentane.pdb
+  30 octane.pdb
+ 107 total
+```
+
+---
+
+## Filtering Files and using the result
+
+* Cool 😎 but now we want to use this list.
+* Could save it to a new file?
+
+```bash
+$ sort -n lengths.txt > sorted_lengths.txt
+$ head -n 2 sorted_lengths.txt
+```
+
+```
+   9 methane.pdb
+  12 ethane.pdb
+```
+
+## Filtering Files and **the pipe**
+
+* We call `|` the pipe. It takes output from a command and gives it to another command.
+* Modern languages use their own version of this (R has a package and now also a native pipe, julia has of course a pipe etc. Stata not sure 😜)
+* The **pipe** allows us to do this *without* storing intermediate results.
+
+```bash
+$ sort -n lengths.txt | head -n 1
+```
+
+```
+ 9 methane.pdb
+```    
+
+* But, wait 🤔. Then we don't even need `lengths.txt`:
+
+```bash
+$ wc -l *.pdb | sort -n | head -n 1
+```
+
+```
+ 9 methane.pdb
+```    
+
+* That's a *pipeline*. 🤯
+
+
+---
+
+
+## Piping Away
+
+* Make sure we are still in `~/shell-lesson-data/exercise-data/proteins`
+
+
+:::{.callout-important}
+
+# Pipe Dreams
+
+Which of the following commands shows us the 3 files with the least number of lines in the current directory? Build the pipeline up from left to right to check!
+
+1. `wc -l * > sort -n > head -n 3`
+2. `wc -l * | sort -n | head -n 1-3`
+3. `wc -l * | sort -n | tail -n 4 | head -n 3`
+4. `wc -l * | sort -n | head -n 3`
+
+:::
+
+---
+
+## Piping Away
+
+* Make sure we are still in `~/shell-lesson-data/exercise-data/proteins`
+
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+Option 4 is correct. Option 3 finds the ones with *most* lines.
+:::
+</details>
+
+
+---
+
+## Cutting and Piping
+
+* We have a `.csv` file here: `shell-lesson-data/exercise-data/animal-counts`
+* Let's use the `cut` command to get parts of it.
+
+```bash
+$ cd ~/shell-lesson-data/exercise-data/animal-counts
+$ cut -d , -f 2 animals.csv
+```
+
+::: {.callout-important}
+
+# Building a Pipe
+
+* `uniq` filters **adjacent** matching lines in a file.
+* Can you extend the above command with `uniq` (and another command?) such that we get the list of unique animal names?
+* Add the `-c` flag to `uniq` to get a contingency table.
+
+:::
+
+---
+
+## Building a Pipe
+
+
+<details>
+<summary>Show Solution</summary>
+
+::: {.callout-note}
+# Solution
+1. `cut -d , -f 2 animals.csv | sort | uniq`
+1. `cut -d , -f 2 animals.csv | sort | uniq -c`
+:::
+</details>
+
+
+---
+
+## House Prices in France
+
+The below dataset contains information on house sales (price, location, type of house etc). We call one record a _housing transaction_.
+
+Using the shell:
+
+1. Use `wget` to download data to [from here](https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt) to your downloads folder as `carburants.csv`: `wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt`
+2. use `wc -l` to count how many rows (*lines*) there are
+3. use `head -n 2` to see the first two rows (the *header*)
+4. Use the above solution to build a contingency table that tells us the number of housing transactions per *commune*. Show the 10 cities with most housing transactions.
+5. Compute the average of variable `Valeur fonciere`. You should use the `awk` command like this : `awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'`
+
+---
+
+## House Prices in France
+
+The below dataset contains information on house sales (price, location, type of house etc). We call one record a _housing transaction_.
+
+Using the shell:
+
+5. Compute the average of variable `Valeur fonciere`. You should use the `awk` command like this : `awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);} your_file.txt'`
+
+---
+
+## Real Data
+
+<details>
+<summary>Show Solution</summary>
+
+1. `wget https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt`
+2. `wc -l valeursfoncieres-2023.txt`
+3. `head -n 2 valeursfoncieres-2023.txt`
+4. `cut -d '|' -f 18 valeursfoncieres-2023.txt | sort | uniq -c | sort -r | head -n 10 `
+5. `cut -d '|' -f 11 valeursfoncieres-2023.txt | cut -d , -f 1 | awk 'BEGIN{s=0;}{s+=$1;}END{print s/(NR);}' `
+6. If you have R installed you can check whether this is the same as reading this column into it (it's not! odd.)
+
+```bash
+Rscript -e 'x = data.table::fread(cmd = "cut -d \'|\' -f 11 valeursfoncieres-2023.txt | cut -d , -f 1"); x[, mean(`Valeur fonciere`,na.rm = TRUE)]'
+```
+
+</details>
+
+
+
+
