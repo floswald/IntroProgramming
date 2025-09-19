@@ -17,18 +17,22 @@ number-sections: true
 * After this course, we want you to be able to participate or conduct your own research project in an efficient way. *Research* nowadays means data sciencey stuff in most cases, certainly in Economics. 
 * We want you to have a basic understanding of how an operating system (in particular, *your* OS) works.
 * We want to be able to achieve a basic level of automation in repetitive tasks.
-* We want you to know what Version Control is and how to use it in a research project.
-* We will introduce some (hopefully) useful `R` programming.
+* We will introduce Python thoroughly.
+* We will also show R.
+* Maybe, we will have time to look at julia as well.
 
 # Program
 
 This course has several submodules. 
 
-1. Installing Software and Preparing environment (you do that at home, see below [@sec-setup)
+1. Installing Software and Preparing environment (you do that at home, see below in @sec-setup).
 2. OS Basics: What *is* an OS, how to work with it.
 3. Python
 4. R
 5. julia (maybe)
+
+> I just want to run some python code right away!! 
+> 👉 https://github.com/floswald/hello-devcontainer-with-jupyter
 
 | Module | Session Number |  Topic      |  Author |
 |:------------:|:------------:|:-----------|:-------------:|
