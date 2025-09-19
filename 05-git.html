@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href=".//images/unito-shield.png" rel="icon" type="image/png">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.40">
+
+  <meta name="author" content="Florian Oswald and The Software Carpentry">
+  <title>Intro To Programming – Version Control with Git</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f5886318b96081c0697e67d1e938480b.css">
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TQGG8QBSRH"></script>
+
+  <script type="text/javascript">
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
+  </script>
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<meta name="twitter:title" content="Version Control with Git – Intro To Programming">
+<meta name="twitter:description" content="SciencesPo Intro To Programming 2024">
+<meta name="twitter:card" content="summary">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Version Control with <code>Git</code></h1>
+  <p class="subtitle"><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Florian Oswald and The Software Carpentry 
+</div>
+</div>
+</div>
+
+  <p class="date">19 September, 2025</p>
+</section>
+<section id="version-what" class="slide level2">
+<h2>Version What?</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>What is Version Control and Why Should I Care?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Objectives</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Understand the benefits of an automated version control system.</li>
+<li>Understand the basics of how automated version control systems work.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="final.doc" class="slide level2">
+<h2>Final.doc</h2>
+
+<img data-src="./images/phd101212s.png" class="r-stretch quarto-figure-center"><p class="caption">“Piled Higher and Deeper” by Jorge Cham, http://www.phdcomics.com</p></section>
+<section id="undo" class="slide level2">
+<h2>Undo</h2>
+<ul>
+<li>The <em>latest version</em> is often best for text documents.</li>
+<li>However, sometimes our view of <em>best</em> evolves. Then, we want to <em>undo</em>.</li>
+<li><em>Undo</em> means going back in history.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>MS Word etc have <em>track changes</em> features.</li>
+<li>Once you accepted the proposed changes of a collaborator, can you go back?</li>
+<li>What about Dropbox-like solutions? (What <em>is</em> dropbox actually?)</li>
+</ul>
+</div>
+</section>
+<section id="which-version-20210611_draft.tex" class="slide level2">
+<h2>Which Version: 20210611_draft.tex</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<blockquote>
+<p>Research team 👇 orders files by YYYYMMDD.</p>
+</blockquote>
+<ul>
+<li><em>Hey, fixed that thing last week.</em></li>
+<li>In <code>20220629-paper.tex</code>?</li>
+<li><em>Erm. Yes. No.&nbsp;I think <code>20211203-paper.tex</code> - messed up the file name.</em></li>
+<li>Ok, can you copy it into the latest version?</li>
+<li><em>Sure. Damn, can’t find it anymore. I’ll just write it again. All in my head.</em> 🤯</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./images/which-version.png"></p>
+<figcaption>“True Story” by Florian Oswald</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="which-version-2-why-is-the-sample-size-so-small-suddenly" class="slide level2">
+<h2>Which Version 2: <strong>Why is the sample size so small suddenly</strong>?</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>We had 800 observations, now 733. Why?</li>
+<li>Erm…😱 No clue!</li>
+<li>Well you must have changed the code.</li>
+<li>Yes, I <em>improved</em> the code in several parts.</li>
+<li>Well you have to find out what happened.</li>
+<li>But that was weeks ago - I don’t remember! 😢</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="hard-bugs">Hard Bugs</h3>
+<ul>
+<li>The hard bugs 🐛 are the ones you see only after a while.</li>
+<li>See result today, error was introduced long ago.</li>
+<li>You can rewind dropbox 30 days. What if… ?</li>
+<li>Also, throw away 30 days of work?</li>
+<li>😱 😱 😱 😱</li>
+</ul>
+</div></div>
+</section>
+<section id="section" class="slide level2" data-background-image="./images/removed-that.png" data-background-size="100%">
+<h2></h2>
+</section>
+<section id="setting-up-git" class="slide level2">
+<h2>Setting Up Git</h2>
+<ul>
+<li>We all installed <code>git</code>.</li>
+<li>Let’s setup our name</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.name <span class="st">"Your Name"</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git config <span class="at">--global</span> user.email <span class="st">"your@mail.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Line Endings on Windows:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> core.autocrlf false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creating-a-git-repository" class="slide level2">
+<h2>Creating a Git <strong>Repository</strong></h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Where does Git store information?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Objectives</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Create a local repository</li>
+<li>Describe purpose of <code>.git</code> directory</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="house-prices-project" class="slide level2">
+<h2>House Prices Project</h2>
+<ul>
+<li>Let’s create a project folder in our home to look at the house prices from last week.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd    <span class="co"># going to home dir </span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir houseprices  <span class="co"># create directory</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd houseprices </span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Now the directory <code>~/houseprices</code> is endowed with <code>git</code> version control.</li>
+<li>What does that look like?</li>
+</ul>
+</section>
+<section id="where-is-git" class="slide level2">
+<h2>Where is Git?</h2>
+<ul>
+<li>Remember <em>hidden files</em> and folders?</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-a</span> </span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./</span>    ../   .git/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Git for this repository resides in <code>.git</code></li>
+</ul>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Danger Zone</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>If you <em>delete</em> that folder, the entire version control is GONE.</li>
+<li>Be very careful that you really want to do that.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="tracking-changes-with-git" class="slide level2">
+<h2>Tracking Changes with Git</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>How do I record changes in Git?</li>
+<li>How do I check the status of my version control repository?</li>
+<li>How do I record notes about what changes I made and why?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Objectives</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Understand the benefits of an automated version control system.</li>
+<li>Understand the basics of how automated version control systems work.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-code-and-text" class="slide level2">
+<h2>Adding Code and Text</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Notice: The code we produce <strong>is</strong> text.</li>
+<li>Remember what we learned about <strong>file endings</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<ul>
+<li>Let’s add a shell script where we add our pipeline from last week.</li>
+</ul>
+<ol type="1">
+<li>run to get the raw data again:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://static.data.gouv.fr/resources/demandes-de-valeurs-foncieres/20240408-125738/valeursfoncieres-2023.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-code-and-text-1" class="slide level2">
+<h2>Adding Code and Text</h2>
+<ol start="2" type="1">
+<li>create a script</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> maketable.sh  <span class="co"># open nano</span></span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># type this:</span></span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/houseprices   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">'|'</span> <span class="at">-f</span> 18 valeursfoncieres-2023.txt <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-r</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 10</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>(Does it work?)</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> .  <span class="co"># check the new file is there</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span>   <span class="co"># run it!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>No, it doesn’t. 😖</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x ./maketable.sh  <span class="co"># add executable mode</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-a</span></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">./maketable.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="viewing-changes" class="slide level2">
+<h2>Viewing Changes</h2>
+<ul>
+<li>Ok, now let’s see what <code>git</code> makes of our additions to this directory.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode tcl code-with-copy"><code class="sourceCode tcl"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a>floswald@PTL11077 ~/houseprices (main)&gt; git <span class="ot">status</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a>No commits yet</span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a>Untracked files:</span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a>  (use <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed)</span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a>        valeursfoncieres<span class="fl">-2023.</span>txt</span>
+<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a>        maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>It is actually helpful <strong>not</strong> to use <code>bash</code> as a shell…</li>
+<li>Customizing your shell is an extremely effective procrastination device.</li>
+<li>You must know what <a href="https://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html"><em>shaving a Yak</em></a> means before you walk out of my class.</li>
+</ul>
+</section>
+<section id="seeing-the-difference" class="slide level2">
+<h2>Seeing the Difference</h2>
+<ul>
+<li>the command <code>git diff</code> shows you what changed between versions.</li>
+<li>lets see what it shows now:</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>It shows nothing, i.e.&nbsp;an <em>empty</em> diff, because <em>there are no commits yet</em> to compare with.</li>
+<li>Ok, let’s change that.</li>
+</ul>
+</section>
+<section id="modify-add-commit-1" class="slide level2">
+<h2>Modify-Add-Commit 1</h2>
+<ul>
+<li>git reports about <em>untracked files</em>. We need to decide <em>what to track</em>.</li>
+</ul>
+<ol type="1">
+<li>Move files to <em>staging area</em>:</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add maketable.sh </span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Notice that I did <em>not</em> want to track the <code>csv</code> file.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">No</span> commits yet</span>
+<span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Changes</span> to be committed:</span>
+<span id="cb12-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git rm --cached &lt;file&gt;..."</span> to unstage<span class="kw">)</span></span>
+<span id="cb12-7"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">new</span> file:   maketable.sh</span>
+<span id="cb12-8"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb12-10"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
+<span id="cb12-11"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">valeursfoncieres-2023.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modify-add-commit-2" class="slide level2">
+<h2>Modify-Add-Commit 2</h2>
+<ul>
+<li>Now, let’s <em>record</em> what is in the staging area.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added the maketable script'</span></span>
+<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">[main</span> <span class="er">(</span><span class="ex">root-commit</span><span class="kw">)</span> <span class="ex">9956506]</span> added the maketable script</span>
+<span id="cb13-4"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">1</span> file changed, 2 insertions<span class="er">(</span><span class="ex">+</span><span class="kw">)</span></span>
+<span id="cb13-5"><a aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>check status:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git status</span>
+<span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">On</span> branch main</span>
+<span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Untracked</span> files:</span>
+<span id="cb14-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="kw">(</span><span class="ex">use</span> <span class="st">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="kw">)</span></span>
+<span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a>        <span class="ex">valeursfoncieres-2023.txt</span></span>
+<span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">nothing</span> added to commit but untracked files present <span class="er">(</span><span class="ex">use</span> <span class="st">"git add"</span> to track<span class="kw">)</span></span>
+<span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">➜</span>  gasprices git:<span class="er">(</span><span class="ex">main</span><span class="kw">)</span> <span class="ex">✗</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modify-add-commit-3" class="slide level2">
+<h2>Modify-Add-Commit 3</h2>
+<ul>
+<li>Let’s check what’s in the log.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log </span>
+<span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">commit</span> 9956506dc3159403b87aea3b04654c293e82c680 <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span></span>
+<span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Author:</span> Florian Oswald <span class="op">&lt;</span>florian.oswald@gmail.com<span class="op">&gt;</span></span>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Date:</span>   Tue Feb 7 10:50:51 2023 +0100</span>
+<span id="cb15-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a aria-hidden="true" tabindex="-1"></a>    <span class="ex">added</span> the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="modify-add-commit-4" class="slide level2">
+<h2>Modify-Add-Commit 4</h2>
+<ul>
+<li>Now let’s <em>modify</em> the script finally.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
+<span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># add this line on top </span></span>
+<span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> hello user, will make a contigency table now.</span>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save and exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>now - what’s the difference in the repo?</li>
+</ul>
+</section>
+<section id="diffing" class="slide level2">
+<h2>Diffing</h2>
+<ul>
+<li>there are still the same files here:</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls </span>
+<span id="cb17-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">valeursfoncieres-2023.txt</span>  maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>But we can now <em>compare</em> versions:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff </span>
+<span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span> <span class="at">--git</span> a/maketable.sh b/maketable.sh</span>
+<span id="cb18-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">index</span> 7e01058..3b7007e 100644</span>
+<span id="cb18-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">---</span> a/maketable.sh</span>
+<span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+++</span> b/maketable.sh</span>
+<span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="ex">@@</span> <span class="at">-1,2</span> +1,3 @@</span>
+<span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a><span class="ex">+echo</span> hello user, will make a contigency table now.</span>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a> <span class="bu">cd</span> ~/valeursfoncieres-2023.txt   <span class="co"># make sure we are in the right place</span></span>
+<span id="cb18-10"><a aria-hidden="true" tabindex="-1"></a> <span class="fu">cut</span> <span class="at">-d</span> <span class="st">';'</span> <span class="at">-f</span> 5 valeursfoncieres-2023.txt <span class="kw">|</span> <span class="fu">tr</span> <span class="pp">[</span><span class="ss">:lower:</span><span class="pp">]</span> <span class="pp">[</span><span class="ss">:upper:</span><span class="pp">]</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="commiting-changes-again" class="slide level2">
+<h2>Commiting Changes Again</h2>
+<ul>
+<li>let’s first check everything runs</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ./maketable.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>good. commit!</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added message to user'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-a-readme" class="slide level2">
+<h2>Adding a README</h2>
+<ul>
+<li>Good. Now let’s add a <code>README</code> file.</li>
+<li>It’s customary to write this in <a href="https://carpentries-incubator.github.io/markdown-intro/">markdown</a></li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano README.md </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>write this in nano and save when done.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu"># Gas Prices</span></span>
+<span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a aria-hidden="true" tabindex="-1"></a>This repo contains code to analyse gas prices at French gas stations.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>add to staging area, so we can take a snapshot</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add README.md </span>
+<span id="cb23-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git commit <span class="at">-m</span> <span class="st">'added readme'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="what-is-this-staging-area" class="slide level2">
+<h2>What is this Staging Area?</h2>
+<ul>
+<li><code>git</code> is like a fotographic camera.</li>
+<li>before you take a picture of your friends, you need to arrange them somehow, so that all fit, and so that all 😁.</li>
+<li>You put them <em>on stage</em>. Same for files in your repo.</li>
+</ul>
+
+<img data-src="./images/git-staging-area.svg" class="r-stretch quarto-figure-center"><p class="caption">figure from <a href="">software carpentry</a></p></section>
+<section id="what-is-this-staging-area-1" class="slide level2">
+<h2>What is this Staging Area?</h2>
+
+<img data-src="./images/git-staging-CDG.jpeg" class="r-stretch quarto-figure-center"><p class="caption">I took that picture at CDG airport</p></section>
+<section id="looking-at-history" class="slide level2">
+<h2>Looking at History</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Question</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>How can I identify old versions of files?</li>
+<li>How do I review my changes?</li>
+<li>How can I recover old versions of files?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Objectives</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Explain what the HEAD of a repository is and how to use it.</li>
+<li>Identify and use Git commit numbers.</li>
+<li>Compare various versions of tracked files.</li>
+<li>Restore old versions of files.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="the-most-recent-version-head" class="slide level2">
+<h2>The most recent version: HEAD</h2>
+<ul>
+<li>Let’s change the <code>maketable.sh</code> script again:</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> nano maketable.sh</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> program run successfully</span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># save exit</span></span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git add maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The most recent version of our repo is called <code>HEAD</code>.</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff <span class="co"># compares entire repo to HEAD </span></span>
+<span id="cb25-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git diff HEAD maketable.sh  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="whoops-typo" class="slide level2">
+<h2>Whoops, typo</h2>
+<ul>
+<li>Oh no, we wrote <em>program run successfully</em>. That should be <em>ran</em> not <em>run</em>.</li>
+<li>What now?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>we have not committed this yet!</li>
+<li>we can just get back the version in HEAD, and edit again:</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git restore maketable.sh</span>
+<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout maketable.sh <span class="co"># also works</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>edit the script, add and commit.</li>
+</ul>
+</div>
+</section>
+<section id="how-to-get-a-specific-version" class="slide level2">
+<h2>How to get a <em>specific</em> version</h2>
+<ul>
+<li>What if you want something else than <code>HEAD</code>?</li>
+<li>like, the first version of <code>maketable.sh</code>?</li>
+<li>look at history:</li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb27-2"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> a6f023b <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">added</span> readme</span>
+<span id="cb27-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> 9956506 added the maketable script</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>The <code>9956506</code> is the unique identifier of that version.</li>
+<li>We can go back to that version:</li>
+</ul>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout 9956506 maketable.sh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section class="slide level2">
+
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key Points</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><code>git diff</code> displays differences between commits.</li>
+<li><code>git checkout</code> recovers old versions of files.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="so-how-does-this-thing-work" class="slide level2">
+<h2>So, how does this thing work?</h2>
+
+<img data-src="./images/git_staging.svg" class="r-stretch quarto-figure-center"><p class="caption">software carpentry image.</p></section>
+<section id="version-control-with-vscode" class="slide level2">
+<h2>Version Control with VScode</h2>
+<ul>
+<li>Download <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li>Start</li>
+<li>Open folder <code>~/gasprices</code></li>
+<li>check version control tab on the left.</li>
+</ul>
+</section>
+<section id="version-control-with-rstudio" class="slide level2">
+<h2>Version Control with RStudio</h2>
+<ul>
+<li>top right click on <em>new project</em></li>
+<li>Select <em>existing directory</em></li>
+<li>Select <code>~/gasprices</code></li>
+<li>checkout out the <code>git</code> tab in Rstudio!</li>
+</ul>
+</section>
+<section id="collaborating-with-git-on-github" class="slide level2">
+<h2>Collaborating with Git on GitHub</h2>
+<ul>
+<li>Create repo</li>
+<li>copy ssh remote URL</li>
+<li>connect local to remote repo</li>
+</ul>
+</section>
+<section id="ssh-connections" class="slide level2">
+<h2>SSH connections</h2>
+<ul>
+<li>Secure Shell Protocol</li>
+<li>Private-Public key pair. It’s like a lock, and you have the only key.</li>
+<li>Let’s check if you have one already!</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>if error, create one:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"your@email.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>press enter (no passphrase)</p>
+<p>check</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="communicate-with-github-remote" class="slide level2">
+<h2>Communicate with GitHub Remote</h2>
+<ul>
+<li>Let’s ping the remote server at GitHub now.</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>right, of course Github doesn’t have our public key yet (the <em>lock</em> for our key!)</p></li>
+<li><p>copy from your terminal</p></li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub  <span class="co"># or your *.pub </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Go to github.com, click top right corner, settings, SSH keys.</li>
+</ul>
+</section>
+<section id="adding-a-remote-to-your-local-repo" class="slide level2">
+<h2>Adding a Remote to your local Repo</h2>
+<ul>
+<li>Now that we can talk to Github.com, let’s add the remote to our local repo.</li>
+<li>We <code>add</code> a remote by getting the <code>SSH</code> url from the repository (green button) online.</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>origin</code> is the <em>name</em> of the remote server. your choice, but <em>origin</em> is common.</li>
+<li>this should set that remote both for sending and retrieving stuff from the repo. <em>pull</em> and <em>push</em>, in git language:</li>
+</ul>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git remote <span class="at">--v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="pushing-it" class="slide level2">
+<h2>Pushing It</h2>
+<ul>
+<li>Now we can <em>push</em> our local repository to the remote repo.</li>
+<li>There will be a full copy of what is in <code>.git</code> (i.e., the entire history of the repo) on that remote machine.</li>
+<li>You will be able to use it like a central backup location for your work.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>the <code>-u</code> flag sets the <em>main</em> branch as default <em>upstream</em> branch to track.</li>
+</ul>
+</section>
+<section id="branching-it" class="slide level2">
+<h2>Branching It</h2>
+<ul>
+<li>Next to different <em>versions</em> of a file/directory <em>over time</em>, we can have versions evolving in parallel.</li>
+<li>Imagine development history <em>branching</em> off into 2 separate directions at one point.</li>
+<li>They may converge at some point again, but maybe one of them will turn out a failure and we drop it.</li>
+<li>Branches are hugely useful to organize team work.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git checkout <span class="at">-b</span> testing <span class="co"># checkout repo on new branch `testing`</span></span>
+<span id="cb37-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Switched</span> to a new branch <span class="st">'testing'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Now can develop stuff on the <code>testing</code> branch.</li>
+<li>Later on, we can <code>merge</code> it back into <code>main</code> if we like it.</li>
+</ul>
+</section>
+<section id="the-full-pictures" class="slide level2">
+<h2>The Full Picture(s)</h2>
+
+<img data-src="./images/git-images/full.png" class="r-stretch quarto-figure-center"><p class="caption">picture from <a href="https://marklodato.github.io/visual-git-guide/index-en.html"><span class="citation" data-cites="MarkLodato">@MarkLodato</span></a> - click for more!</p></section>
+<section id="pushing-branches-to-github" class="slide level2">
+<h2>Pushing Branches to GitHub</h2>
+<ul>
+<li>Once you created a local branch you can of course copy (<em>push</em>) it to your remote to share with others.</li>
+<li>you would amend the push command:</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># make sure you are on the desired branch </span></span>
+<span id="cb38-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git branch </span>
+<span id="cb38-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="ex">main</span></span>
+<span id="cb38-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">*</span> testing</span>
+<span id="cb38-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git push origin testing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="./images/ScPo-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://floswald.github.io/ScPoProgramming/">SciencesPo Intro To Programming 2024</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
