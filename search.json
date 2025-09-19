@@ -1324,14 +1324,14 @@
     "href": "index.html",
     "title": "Intro To Programming",
     "section": "",
-    "text": "This website is the home of the course Introduction to Programming.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming.\n© Florian Oswald, 2025"
+    "text": "This website is the home of the course Introduction to Programming.\nThis course assumes no prior programming experience.\nBelow you will find setup instructions and a syllabus.\nYou can obtain all material for this course from the associated github repository at link\n\n\n\n\nAfter this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe will introduce Python thoroughly.\nWe will also show R.\nMaybe, we will have time to look at julia as well.\n© Florian Oswald, 2025"
   },
   {
     "objectID": "index.html#objectives-of-this-course",
     "href": "index.html#objectives-of-this-course",
     "title": "Intro To Programming",
     "section": "",
-    "text": "After this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe want you to know what Version Control is and how to use it in a research project.\nWe will introduce some (hopefully) useful R programming."
+    "text": "After this course, we want you to be able to participate or conduct your own research project in an efficient way. Research nowadays means data sciencey stuff in most cases, certainly in Economics.\nWe want you to have a basic understanding of how an operating system (in particular, your OS) works.\nWe want to be able to achieve a basic level of automation in repetitive tasks.\nWe will introduce Python thoroughly.\nWe will also show R.\nMaybe, we will have time to look at julia as well."
   },
   {
     "objectID": "05-git.html#version-what",

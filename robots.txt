@@ -1,1 +1,1 @@
-Sitemap: https://floswald.github.io/ScPoProgramming/sitemap.xml
+Sitemap: https://floswald.github.io/IntroProgramming/sitemap.xml
