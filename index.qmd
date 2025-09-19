@@ -2,6 +2,7 @@
 title: Intro To Programming
 author: "[Florian Oswald](https://floswald.github.io)"
 subtitle: "UniTo Master in Economics"
+number-sections: true
 ---
 
 # Welcome to *Introduction to Programming*
@@ -19,75 +20,57 @@ subtitle: "UniTo Master in Economics"
 * We want you to know what Version Control is and how to use it in a research project.
 * We will introduce some (hopefully) useful `R` programming.
 
-# Syllabus
+# Program
 
-| Session Number |  Topic      |  Author |
-|:------------:|:-----------|:-------------:|
-| 1            | [The Unix Shell](01-shell-intro.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-| 2            | [Shell: Files and Directories](02-filedir.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-| 3            | [Shell: Working with Files and Directories](03-filework.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-| 4            | [Shell: Pipes and Filters](04-pipes.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-| 5            | [`Git` Version Control](05-git.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
-|            | [Homework 1](https://github.com/floswald/scpoproghw1): complete and run a bash script on gh-actions |  Florian Oswald |
-| 6            | [`R` Intro](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html) |  Florian Oswald|
-| 7            | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
-| 8            | [`R` and `python` generics](06-concepts.qmd) | Florian Oswald|
-| 9            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
-| 10            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
-| 11            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
-| 12            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
-| 13            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
-| 14            | [Quick Intro to NLP with R](11-NLP-R.qmd) |  Florian Oswald|
+This course has several submodules. 
+
+1. Installing Software and Preparing environment (you do that at home, see below [@sec-setup)
+2. OS Basics: What *is* an OS, how to work with it.
+3. Python
+4. R
+5. julia (maybe)
+
+| Module | Session Number |  Topic      |  Author |
+|:------------:|:------------:|:-----------|:-------------:|
+| OS Basics    | 1        | [The Unix Shell](01-shell-intro.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| OS Basics    | 2            | [Shell: Files and Directories](02-filedir.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| OS Basics    | 3            | [Shell: Working with Files and Directories](03-filework.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+|              |              | [Homework 1](https://github.com/floswald/scpoproghw1): complete and run a bash script on gh-actions |  Florian Oswald |
+| Python       | 4-12         | [Python Intro](https://floswald.github.io/2025-09-30-PythonIntro/) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| R            | 13            | [`R` Intro](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html) |  Florian Oswald|
+| R            | 14           | [`R {tidyverse}`](https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html) | [Grant McDermott](https://grantmcdermott.| R            com/)  + Florian Oswald|
+| R            | 15            | [`R` and `python` generics](06-concepts.qmd) | Florian Oswald|
+| R            | 16            | [`R {data.table}`](https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html) | [Grant McDermott](https://grantmcdermott.com/)  + Florian Oswald|
+| R            | 17            | [Building `R` packages](09-R-packages.qmd) |  Florian Oswald|
+| R            | 18            | [Spatial Data with `R`](10-spatial-R.qmd) |  Florian Oswald|
 
 
-# Setup Instructions
+Optional Material
+
+| Module | Session Number |  Topic      |  Author |
+|:------------:|:------------:|:-----------|:-------------:|
+| `*`          |  | [Shell: Pipes and Filters](04-pipes.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| `*`          |  | [`Git` Version Control](05-git.qmd) |  [The Software Carpentry Project](https://software-carpentry.org/) + Florian Oswald |
+| julia            | 19            | [`julia` intro 1](https://floswald.github.io/julia-bootcamp/01-variables.html) |  Florian Oswald|
+| julia            | 20            | [`julia` intro 2](https://floswald.github.io/julia-bootcamp/02-functions.html) |  Florian Oswald|
+| R            | 21            | [Quick Intro to NLP with R](11-NLP-R.qmd) |  Florian Oswald|
+
+
+
+# Setup Instructions {#sec-setup}
 
 * You must bring your own laptop to each class.
 * Please make sure you have an up to date operating system, i.e. run a software update before we start.
-* Everybody should [install R](https://cran.r-project.org/) or make sure they have a recent version installed.
-* Everybody should [install RStudio](https://posit.co/download/rstudio-desktop/) or run an update on the installed program.
 
 
-## Windows and Mac Specific Instructions
+::: {.callout-important}
 
-There are different instructions depending on whether you have a Mac or a Windows computer. Unix-based computers are similar to Macs in most respects.
+# Very Detailed Installation Instructions
 
-### Windows
+* I put together a suite of *extremely* detailed installation instructions. You should follow those [here](https://floswald.github.io/2025-09-30-PythonIntro/#setup) before coming to the first session in class!
+* Each Operating System has different instructions to follow.
 
-We need to install some things that make your windows computer a resemble a bit a Unix box. In particular, we want to be able to use the unix shell. Therefore, I want you to download and install 
-
-* [GitForWindows](https://gitforwindows.org/)
-
-*Specifics:*
-
-1. During the installation process, choose all default settings.
-2. At one point, you are offered a choice for a default editor being used for `git`. If you know `vim` already, why not (I use `vim`), otherwise I recommend `nano`, which is a simple to use editor that runs inside your command line - we want to avoid having to open an external window of a separate editor for our tasks (i.e. don't choose notepad and other standalone editors).
-
-
-### Mac
-
-You should be all set. To make sure we have really everything we need, open `Terminal.app` (in *Applications > Utilities* or do `Cmd + Space` to get spotlight search and type `terminal`). Then paste this code and hit enter:
-
-```bash
-xcode-select --install
-```
-
-click on *install* (don't click on `get Xcode`)
-
-
-### Unix
-
-Same, all set. Maybe open a terminal and type
-
-```bash
-git --version
-```
-
-if that throws an error, install it with your package manager, e.g.
-
-```bash
-sudo apt install git-all
-```
+:::
 
 
 # Code of Conduct

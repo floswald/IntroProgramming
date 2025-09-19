@@ -2,11 +2,11 @@ project:
   type: website
 
 website:
-  title: "ScPoProgramming"
-  favicon: /images/ScPo-logo.png
+  title: "Intro To Programming"
+  favicon: /images/unito-shield.png
   twitter-card: true
   google-analytics: "G-TQGG8QBSRH"
-  body-footer: © Florian Oswald, 2024
+  body-footer: © Florian Oswald, 2025
   sidebar:
     style: "docked"
     contents:
@@ -18,34 +18,26 @@ website:
             text: 2. Files and Directories
           - href: 03-filework.qmd
             text: 3. Working with Files
-          - href: 04-pipes.qmd
-            text: 4. Filters and Pipes
-          - href: 05-git.qmd
-            text: 5. `Git` Version Control         
+          - href: https://floswald.github.io/2025-09-30-PythonIntro/
+            text: 4. Python Workshop
           - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html
-            text: 6. `R` intro
+            text: 13. `R` intro
           - href: https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html
-            text: 7. `R Tidyverse`
-          - href: 06-concepts.qmd
-            text: 8. `R` and `python` generics
+            text: 14. `R Tidyverse`
           - href: https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html
-            text: 9. `R data.table`
+            text: 15. `R data.table`
           - href: 09-R-packages.qmd
-            text: 10. Building `R` packages
+            text: 16. Building `R` packages
           - href: 10-spatial-R.qmd
-            text: 11. Spatial Data with `R`
-          - href: https://floswald.github.io/julia-bootcamp/01-variables.html
-            text: 11. `julia` intro 1
-          - href: https://floswald.github.io/julia-bootcamp/02-functions.html
-            text: 13. `julia` intro 2
+            text: 17. Spatial Data with `R`
 
   navbar:
     left:
       - href: index.qmd
         text: Home
-    logo: /images/ScPo-logo.png
-    background: "#ba0202"
-    foreground: "#faf7f7"
+    logo: /images/unito-red.png
+    foreground: "#ba0202"
+    background: "#faf7f7"
 format:
   html:
     theme: journal

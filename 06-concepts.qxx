@@ -2,12 +2,11 @@
 title: "Intro to Generic Programming"
 ---
 
-
 ```{r reticulate_config}
 #| cache: false
 #| include: false
 library(reticulate)
-use_condaenv("introprog")
+# use_condaenv("introprog")
 ```
 
 In this short lecture we introduce a few core concepts used in programming. We will be using both `R` and `python` as  examples, however, the concepts are transversal across all/most languages. The implementation details - i.e. how do you _invoke_ a certain concept - will differ across languages.
