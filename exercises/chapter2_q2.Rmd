@@ -1,0 +1,23 @@
+Question
+========
+After executing `data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')`, what type of object is `data`?
+
+Answerlist
+-----------
+* A Python list
+* A dictionary
+* A NumPy array
+* A pandas dataframe
+* A string
+* A file handle
+
+Solution
+========
+`numpy.loadtxt` loads data as a NumPy array.
+
+Meta-information
+================
+exname: chapter2_q2
+extype: schoice
+exsolution: 001000
+exshuffle: 6

@@ -1,0 +1,23 @@
+Question
+========
+Consider the assignment `x = 5`. Which of the following statements is correct?
+
+Answerlist
+-----------
+* `x` is defined as a constant and cannot be changed.
+* `x` becomes a label referencing the integer value 5.
+* `x` is now of type `float`.
+* Python automatically creates a variable type for `x` called `integer5`.
+* `x` can only be used in mathematical expressions.
+* You cannot assign a new value to `x` after this line.
+
+Solution
+========
+Python variables are dynamic labels for objects. `x` now refers to the integer 5.
+
+Meta-information
+================
+exname: chapter1_q2
+extype: schoice
+exsolution: 010000
+exshuffle: 6

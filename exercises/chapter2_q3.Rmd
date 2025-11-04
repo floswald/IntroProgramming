@@ -1,0 +1,23 @@
+Question
+========
+If `data.shape` returns `(60, 40)`, what do 60 and 40 represent?
+
+Answerlist
+-----------
+* 60 columns and 40 rows
+* 60 patients and 40 days
+* 60 days and 40 patients
+* 60 files and 40 variables
+* 60 trials and 40 participants
+* 60 bytes and 40 words
+
+Solution
+========
+The data has 60 patients (rows) and 40 days (columns).
+
+Meta-information
+================
+exname: chapter2_q3
+extype: schoice
+exsolution: 010000
+exshuffle: 6

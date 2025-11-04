@@ -1,0 +1,29 @@
+Question
+========
+Given the following code:
+```python
+total = 0
+for x in [1,2,3,4]:
+    total = total + x
+```
+What is the value of `total` after the loop?
+
+Answerlist
+-----------
+* 1
+* 4
+* 10
+* 24
+* 0
+* 7
+
+Solution
+========
+The loop sums 1 + 2 + 3 + 4 = 10.
+
+Meta-information
+================
+exname: chapter5_q2
+extype: schoice
+exsolution: 001000
+exshuffle: 6

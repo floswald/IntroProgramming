@@ -1,0 +1,23 @@
+Question
+========
+Which loop construct is generally used in Python to repeat an action for each element in a sequence?
+
+Answerlist
+-----------
+* while loop only
+* for … in … loop
+* repeat … until loop
+* loop …
+* do … while loop
+* foreach … in … 
+
+Solution
+========
+Python’s `for … in …` loop iterates through each element of a sequence.
+
+Meta-information
+================
+exname: chapter5_q1
+extype: schoice
+exsolution: 010000
+exshuffle: 6

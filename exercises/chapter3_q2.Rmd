@@ -1,0 +1,23 @@
+Question
+========
+What is the effect of using `axis=0` when calling `numpy.mean(data, axis=0)`?
+
+Answerlist
+-----------
+* It computes the mean across each row
+* It computes the mean across each column
+* It flattens the data completely and computes one overall mean
+* It returns a 3D array of means
+* It computes the mean for each individual element
+* It sorts the means in descending order
+
+Solution
+========
+`axis=0` computes the mean of each column (collapsing rows).
+
+Meta-information
+================
+exname: chapter3_q2
+extype: schoice
+exsolution: 010000
+exshuffle: 6

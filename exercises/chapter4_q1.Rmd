@@ -1,0 +1,23 @@
+Question
+========
+Which Python data structure is best for storing an ordered collection of items of possibly different types?
+
+Answerlist
+-----------
+* `int`
+* `dict`
+* `list`
+* `tuple`
+* `set`
+* `float`
+
+Solution
+========
+A `list` can store ordered items of mixed types.
+
+Meta-information
+================
+exname: chapter4_q1
+extype: schoice
+exsolution: 001000
+exshuffle: 6

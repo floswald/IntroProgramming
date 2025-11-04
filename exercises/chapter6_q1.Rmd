@@ -1,0 +1,23 @@
+Question
+========
+Which module is commonly used to get a list of filenames matching a pattern (e.g., `inflammation-*.csv`) in Python?
+
+Answerlist
+-----------
+* `os`
+* `glob`
+* `sys`
+* `re`
+* `csv`
+* `math`
+
+Solution
+========
+The `glob` module finds filenames matching wildcard patterns.
+
+Meta-information
+================
+exname: chapter6_q1
+extype: schoice
+exsolution: 010000
+exshuffle: 6

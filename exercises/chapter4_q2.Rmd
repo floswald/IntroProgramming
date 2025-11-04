@@ -1,0 +1,23 @@
+Question
+========
+Given `my_list = [1, 'a', 3.14]`, which statement is true?
+
+Answerlist
+-----------
+* All elements must be of the same type
+* The list has length 2
+* `my_list[1]` returns `'a'`
+* `my_list[3]` returns `3.14`
+* You cannot mix numeric and string types in a list
+* `my_list[-1]` returns `1`
+
+Solution
+========
+Lists in Python are zero-indexed, so index 1 returns `'a'`.
+
+Meta-information
+================
+exname: chapter4_q2
+extype: schoice
+exsolution: 001000
+exshuffle: 6

@@ -1,0 +1,23 @@
+Question
+========
+What is the correct way to iterate through the indices of the list `my_list`?
+
+Answerlist
+-----------
+* `for i in my_list:`
+* `for i in range(len(my_list)):`
+* `for i in list(range(my_list)):`
+* `for i in my_list.indices():`
+* `while i < my_list:`
+* `for i in enumerate(my_list):`
+
+Solution
+========
+To loop over indices, use `for i in range(len(my_list)):`.
+
+Meta-information
+================
+exname: chapter5_q3
+extype: schoice
+exsolution: 010000
+exshuffle: 6

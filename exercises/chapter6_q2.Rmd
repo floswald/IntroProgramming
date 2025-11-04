@@ -1,0 +1,23 @@
+Question
+========
+Suppose you wish to compute the average across multiple datasets stored in files. Which sequence of steps is correct?
+
+Answerlist
+-----------
+* Read each file, compute its mean, ignore combining them
+* Read each file into an array, sum all arrays, divide by number of files
+* Read only the first file and assume others are identical
+* Use numpy.max on each file and take the maximum of maxima
+* Use matplotlib to compute the averages without reading data
+* Read each file and store as strings only
+
+Solution
+========
+You can average multiple datasets by summing arrays and dividing by the number of files.
+
+Meta-information
+================
+exname: chapter6_q2
+extype: schoice
+exsolution: 010000
+exshuffle: 6

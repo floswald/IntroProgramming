@@ -1,0 +1,23 @@
+Question
+========
+Which of the following statements about using shortcuts for imports is true?
+
+Answerlist
+-----------
+* `import numpy as np` allows you to refer to the library as `np`.
+* `import numpy as n` will automatically create a function called `n`
+* Shortcuts are not allowed in Python
+* `import matplotlib.pyplot as mp` lets you use `mp.plot(...)` only
+* Using shortcuts changes the library functionality
+* After `import numpy as np`, you must still use `numpy.loadtxt(...)`
+
+Solution
+========
+Using `import numpy as np` lets you call `np.loadtxt()` etc. It is a naming shortcut.
+
+Meta-information
+================
+exname: chapter3_q3
+extype: schoice
+exsolution: 100000
+exshuffle: 6

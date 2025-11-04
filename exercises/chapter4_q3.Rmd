@@ -1,0 +1,23 @@
+Question
+========
+Which of the following operations will append an item `x` to the end of a list `L`?
+
+Answerlist
+-----------
+* `L.add(x)`
+* `L.append(x)`
+* `L.insert(0, x)`
+* `L.extend(x)`
+* `L.push(x)`
+* `L + x`
+
+Solution
+========
+The `.append()` method adds a single item to the end of a list.
+
+Meta-information
+================
+exname: chapter4_q3
+extype: schoice
+exsolution: 010000
+exshuffle: 6

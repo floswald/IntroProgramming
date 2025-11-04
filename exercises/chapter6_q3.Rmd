@@ -1,0 +1,23 @@
+Question
+========
+If you have 12 files each containing a 60×40 array, and you sum them all into a new array then divide by 12, what will be the shape of the resulting “composite_data” array?
+
+Answerlist
+-----------
+* (60, 40)
+* (12, 60, 40)
+* (60×12, 40)
+* (60, 40×12)
+* (40, 12)
+* (12, 12)
+
+Solution
+========
+The resulting averaged array retains the same shape, (60, 40).
+
+Meta-information
+================
+exname: chapter6_q3
+extype: schoice
+exsolution: 100000
+exshuffle: 6

@@ -1,0 +1,23 @@
+Question
+========
+In the context of plotting with `matplotlib.pyplot`, what does `plt.imshow(data)` typically do when `data` is a 2D array?
+
+Answerlist
+-----------
+* Creates a line graph of data values
+* Creates a heat-map (image) of the data values
+* Creates a bar chart of data values
+* Writes the data to disk as an image
+* Prints the data to console in colour
+* Converts the data to text
+
+Solution
+========
+`plt.imshow(data)` shows a 2D array as an image (heatmap).
+
+Meta-information
+================
+exname: chapter3_q1
+extype: schoice
+exsolution: 010000
+exshuffle: 6

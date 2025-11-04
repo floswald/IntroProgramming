@@ -1,0 +1,23 @@
+Question
+========
+Which of the following is **not** a built-in Python data type?
+
+Answerlist
+-----------
+* `int`
+* `float`
+* `list`
+* `matrix`
+* `str`
+* `bool`
+
+Solution
+========
+`matrix` is not a built-in Python data type. It is provided by libraries like NumPy, not by core Python.
+
+Meta-information
+================
+exname: chapter1_q1
+extype: schoice
+exsolution: 000100
+exshuffle: 6

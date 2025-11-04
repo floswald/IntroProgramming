@@ -1,0 +1,23 @@
+Question
+========
+What is the correct way to call a function named `f` with argument `a` in Python?
+
+Answerlist
+-----------
+* `call f(a)`
+* `f a`
+* `f(a)`
+* `f->a()`
+* `f.(a)`
+* `f = a()`
+
+Solution
+========
+Functions are called using parentheses: `f(a)`.
+
+Meta-information
+================
+exname: chapter1_q3
+extype: schoice
+exsolution: 001000
+exshuffle: 6

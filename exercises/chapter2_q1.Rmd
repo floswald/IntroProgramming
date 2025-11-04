@@ -1,0 +1,23 @@
+Question
+========
+What does the library `numpy` typically provide when doing data analysis?
+
+Answerlist
+-----------
+* Graphical user interface windows
+* High-level plotting tools only
+* Efficient arrays and matrix operations
+* A database management system
+* A word-processing interface
+* Web-scraping functionality
+
+Solution
+========
+NumPy provides efficient arrays and numerical operations for data analysis.
+
+Meta-information
+================
+exname: chapter2_q1
+extype: schoice
+exsolution: 001000
+exshuffle: 6
