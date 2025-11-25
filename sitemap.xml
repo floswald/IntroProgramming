@@ -5,15 +5,59 @@
     <lastmod>2025-09-19T09:58:28.433Z</lastmod>
   </url>
   <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter1_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter3_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter3_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter5_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter2_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter2_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter6_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter4_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter4_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
     <loc>https://floswald.github.io/IntroProgramming/10-spatial-R.html</loc>
-    <lastmod>2025-09-19T09:58:28.434Z</lastmod>
+    <lastmod>2025-11-25T12:51:33.265Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/IntroProgramming/about.html</loc>
     <lastmod>2025-09-19T09:58:28.436Z</lastmod>
   </url>
   <url>
-    <loc>https://floswald.github.io/IntroProgramming/03-filework.html</loc>
+    <loc>https://floswald.github.io/IntroProgramming/06-concepts.html</loc>
+    <lastmod>2025-11-25T12:46:42.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/09-R-packages.html</loc>
+    <lastmod>2025-09-19T09:58:28.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/01-shell-intro.html</loc>
     <lastmod>2025-09-19T09:58:28.433Z</lastmod>
   </url>
   <url>
@@ -21,16 +65,12 @@
     <lastmod>2025-09-19T09:58:28.435Z</lastmod>
   </url>
   <url>
-    <loc>https://floswald.github.io/IntroProgramming/01-shell-intro.html</loc>
+    <loc>https://floswald.github.io/IntroProgramming/03-filework.html</loc>
     <lastmod>2025-09-19T09:58:28.433Z</lastmod>
   </url>
   <url>
-    <loc>https://floswald.github.io/IntroProgramming/09-R-packages.html</loc>
-    <lastmod>2025-09-19T09:58:28.434Z</lastmod>
-  </url>
-  <url>
     <loc>https://floswald.github.io/IntroProgramming/index.html</loc>
-    <lastmod>2025-09-19T16:35:26.035Z</lastmod>
+    <lastmod>2025-11-25T12:48:01.883Z</lastmod>
   </url>
   <url>
     <loc>https://floswald.github.io/IntroProgramming/05-git.html</loc>
@@ -39,5 +79,41 @@
   <url>
     <loc>https://floswald.github.io/IntroProgramming/04-pipes.html</loc>
     <lastmod>2025-09-19T09:58:28.433Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter4_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter6_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter6_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter2_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter5_q3.html</loc>
+    <lastmod>2025-11-04T18:00:08.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter5_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter3_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.657Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter1_q2.html</loc>
+    <lastmod>2025-11-04T18:00:08.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://floswald.github.io/IntroProgramming/exercises/chapter1_q1.html</loc>
+    <lastmod>2025-11-04T18:00:08.655Z</lastmod>
   </url>
 </urlset>

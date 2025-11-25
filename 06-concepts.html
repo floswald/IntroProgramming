@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intro to Generic Programming – ScPoProgramming</title>
+<title>Intro to Generic Programming – Intro To Programming</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,16 +64,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//images/ScPo-logo.png" rel="icon" type="image/png">
+<link href=".//images/unito-shield.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-86daaaaad7353f9cc0c554efc1dd6d94.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d21bd5be29d56535ee1f47b6214a96a7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +113,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
-<meta name="twitter:title" content="Intro to Generic Programming – ScPoProgramming">
+<meta name="twitter:title" content="Intro to Generic Programming – Intro To Programming">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -126,10 +126,10 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/ScPo-logo.png" alt="" class="navbar-logo">
+    <img src="./images/unito-red.png" alt="" class="navbar-logo">
     </a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">ScPoProgramming</span>
+    <span class="navbar-title">Intro To Programming</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -153,7 +153,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-shell-intro.html">Lessons:</a></li><li class="breadcrumb-item"><a href="./06-concepts.html">8. <code>R</code> and <code>python</code> generics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-shell-intro.html">Lessons:</a></li><li class="breadcrumb-item"><a href="./06-concepts.html">13. <code>R</code> and python</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -194,62 +194,44 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-pipes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Filters and Pipes</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./05-git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">5. <code>Git</code> Version Control</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_intro_programming/chapter_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">6. <code>R</code> intro</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">7. <code>R Tidyverse</code></span></a>
+  <a href="https://floswald.github.io/2025-09-30-PythonIntro/" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Python Workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-concepts.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">8. <code>R</code> and <code>python</code> generics</span></a>
+ <span class="menu-text">13. <code>R</code> and python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. <code>R</code> intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://raw.githack.com/ScPoEcon/ScPoEconometrics-Slides/master/chapter_tidy_programming/chapter_tidy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. <code>R Tidyverse</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="https://raw.githack.com/floswald/lectures/master/05-datatable/05-datatable.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">9. <code>R data.table</code></span></a>
+ <span class="menu-text">15. <code>R data.table</code></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09-R-packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10. Building <code>R</code> packages</span></a>
+ <span class="menu-text">16. Building <code>R</code> packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10-spatial-R.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. Spatial Data with <code>R</code></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://floswald.github.io/julia-bootcamp/01-variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. <code>julia</code> intro 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="https://floswald.github.io/julia-bootcamp/02-functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">13. <code>julia</code> intro 2</span></a>
+ <span class="menu-text">17. Spatial Data with <code>R</code></span></a>
   </div>
 </li>
       </ul>
@@ -281,7 +263,7 @@ gtag('config', 'G-TQGG8QBSRH', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-shell-intro.html">Lessons:</a></li><li class="breadcrumb-item"><a href="./06-concepts.html">8. <code>R</code> and <code>python</code> generics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-shell-intro.html">Lessons:</a></li><li class="breadcrumb-item"><a href="./06-concepts.html">13. <code>R</code> and python</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Intro to Generic Programming</h1>
 </div>
@@ -695,7 +677,7 @@ $alice
 </section>
 </section>
 
-<p>© Florian Oswald, 2024</p></main> <!-- /main -->
+<p>© Florian Oswald, 2025</p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -778,8 +760,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -788,7 +768,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/floswald\.github\.io\/ScPoProgramming\/");
+      var filterRegex = new RegExp("https:\/\/floswald\.github\.io\/IntroProgramming\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -890,7 +870,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
